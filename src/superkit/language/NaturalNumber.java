@@ -22,6 +22,11 @@ public interface NaturalNumber extends Iterable<Index>
 		return (int) get();
 	}
 
+	public default long asLong()
+	{
+		return get();
+	}
+
 	public default Iterable<Index> indexesLessThan()
 	{
 		return new Iterable<Index>()
