@@ -24,7 +24,7 @@ public interface Index extends NaturalNumber
 
 	public default Count distance(Index that)
 	{
-		return Count.forLong(Math.abs(get() - that.get()));
+		return Count.of(Math.abs(get() - that.get()));
 	}
 
 	public default Index immutable()

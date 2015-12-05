@@ -43,7 +43,7 @@ public class IndexList implements Iterable<Index>
 
 	public Count size()
 	{
-		return Count.forLong(this.indexes.size());
+		return Count.of(this.indexes.size());
 	}
 
 	@Override

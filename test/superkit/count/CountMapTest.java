@@ -14,9 +14,9 @@ public class CountMapTest
 		counts.increment("A");
 		counts.increment("C");
 		counts.increment("T");
-		assertEquals(counts.maximumCount(), Count.forLong(2));
-		assertEquals(counts.count("A"), Count.forLong(2));
-		assertEquals(counts.count("C"), Count.forLong(1));
+		assertEquals(counts.maximumCount(), Count.of(2));
+		assertEquals(counts.count("A"), Count.of(2));
+		assertEquals(counts.count("C"), Count.of(1));
 		assertEquals(counts.count("G"), Count.ZERO);
 	}
 }

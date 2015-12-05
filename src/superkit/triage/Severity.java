@@ -1,4 +1,6 @@
-package superkit.values;
+package superkit.triage;
+
+import superkit.math.ZeroToOne;
 
 public class Severity extends ZeroToOne
 {

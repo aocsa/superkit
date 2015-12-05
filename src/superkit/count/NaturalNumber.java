@@ -6,7 +6,7 @@ public interface NaturalNumber extends Iterable<Index>
 {
 	public default Count asCount()
 	{
-		return Count.forLong(get());
+		return Count.of(get());
 	}
 
 	public default Index asIndex()

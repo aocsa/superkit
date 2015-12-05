@@ -1,5 +1,6 @@
 package superkit.count;
 
+import java.io.ObjectStreamException;
 import java.text.NumberFormat;
 import java.util.Objects;
 
@@ -43,5 +44,11 @@ public class CountValue implements Count
 	public String toString()
 	{
 		return NumberFormat.getNumberInstance().format(this.count);
+	}
+
+	private Object readResolve() throws ObjectStreamException
+	{
+		// Turns cached count values back into references in the cache
+		return Count.of(this.count);
 	}
 }

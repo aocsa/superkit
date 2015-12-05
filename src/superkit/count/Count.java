@@ -4,46 +4,46 @@ public interface Count extends NaturalNumber
 {
 	static CountValueCache cache = new CountValueCache();
 
-	public static Count ZERO = forLong(0);
-	public static Count ONE = forLong(1);
-	public static Count TWO = forLong(2);
-	public static Count THREE = forLong(3);
-	public static Count FOUR = forLong(4);
-	public static Count FIVE = forLong(5);
-	public static Count SIX = forLong(6);
-	public static Count SEVEN = forLong(7);
-	public static Count EIGHT = forLong(8);
-	public static Count NINE = forLong(9);
-	public static Count TEN = forLong(10);
+	public static Count ZERO = of(0);
+	public static Count ONE = of(1);
+	public static Count TWO = of(2);
+	public static Count THREE = of(3);
+	public static Count FOUR = of(4);
+	public static Count FIVE = of(5);
+	public static Count SIX = of(6);
+	public static Count SEVEN = of(7);
+	public static Count EIGHT = of(8);
+	public static Count NINE = of(9);
+	public static Count TEN = of(10);
 
-	public static Count forLong(long value)
+	public static Count of(long value)
 	{
 		return cache.forLong(value);
 	}
 
-	public static Count forString(String value)
+	public static Count of(String value)
 	{
-		return forLong(Long.parseLong(value));
+		return of(Long.parseLong(value));
 	}
 
 	public default Count add(NaturalNumber value)
 	{
-		return Count.forLong(get() + value.get());
+		return Count.of(get() + value.get());
 	}
 
 	public default Count decremented()
 	{
-		return Count.forLong(get() - 1);
+		return Count.of(get() - 1);
 	}
 
 	public default Count immutable()
 	{
-		return Count.forLong(get());
+		return Count.of(get());
 	}
 
 	public default Count incremented()
 	{
-		return Count.forLong(get() + 1);
+		return Count.of(get() + 1);
 	}
 
 	public default Count maximum(Count that)
@@ -63,7 +63,7 @@ public interface Count extends NaturalNumber
 
 	public default Count subtract(NaturalNumber that)
 	{
-		return Count.forLong(get() - that.get());
+		return Count.of(get() - that.get());
 	}
 
 	@Override

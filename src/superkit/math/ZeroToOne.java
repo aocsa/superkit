@@ -1,4 +1,4 @@
-package superkit.values;
+package superkit.math;
 
 import superkit.language.Comparison;
 

@@ -1,7 +1,7 @@
 package superkit.messaging.messages;
 
 import superkit.messaging.AbstractMessage;
-import superkit.values.Severity;
+import superkit.triage.Severity;
 
 public class Information extends AbstractMessage
 {

@@ -64,6 +64,6 @@ public class ObjectList<T>
 
 	public Count size()
 	{
-		return Count.forLong(this.objects.size());
+		return Count.of(this.objects.size());
 	}
 }

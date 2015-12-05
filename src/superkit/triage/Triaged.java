@@ -1,4 +1,4 @@
-package superkit.values;
+package superkit.triage;
 
 public interface Triaged
 {
