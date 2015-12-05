@@ -1,7 +1,9 @@
-package superkit.count;
+package superkit.language.index;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
+
+import superkit.language.NaturalNumber;
 
 public class MutableIndex implements Index
 {

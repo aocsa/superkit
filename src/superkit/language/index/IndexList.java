@@ -1,10 +1,11 @@
-package superkit.count;
+package superkit.language.index;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import superkit.collections.ObjectList;
+import superkit.language.count.Count;
 
 public class IndexList implements Iterable<Index>
 {

@@ -1,4 +1,7 @@
-package superkit.count;
+package superkit.language.count;
+
+import superkit.language.NaturalNumber;
+import superkit.language.index.Index;
 
 public interface Count extends NaturalNumber
 {

@@ -1,4 +1,4 @@
-package superkit.object;
+package superkit.language.object;
 
 public interface Factory<T>
 {

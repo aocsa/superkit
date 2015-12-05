@@ -1,7 +1,9 @@
-package superkit.count;
+package superkit.language.count;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
+
+import superkit.language.NaturalNumber;
 
 public class MutableCount implements Comparable<MutableCount>, Count
 {

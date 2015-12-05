@@ -1,6 +1,9 @@
-package superkit.count;
+package superkit.language;
 
 import java.util.Iterator;
+
+import superkit.language.count.Count;
+import superkit.language.index.Index;
 
 public interface NaturalNumber extends Iterable<Index>
 {

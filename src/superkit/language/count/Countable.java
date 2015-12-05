@@ -1,4 +1,4 @@
-package superkit.count;
+package superkit.language.count;
 
 public interface Countable
 {

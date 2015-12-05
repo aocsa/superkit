@@ -1,4 +1,4 @@
-package superkit.count;
+package superkit.language.count;
 
 import java.util.HashMap;
 import java.util.Map;

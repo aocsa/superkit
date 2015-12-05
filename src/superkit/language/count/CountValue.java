@@ -1,8 +1,10 @@
-package superkit.count;
+package superkit.language.count;
 
 import java.io.ObjectStreamException;
 import java.text.NumberFormat;
 import java.util.Objects;
+
+import superkit.language.NaturalNumber;
 
 public class CountValue implements Count
 {

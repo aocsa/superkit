@@ -1,6 +1,8 @@
-package superkit.count;
+package superkit.language.index;
 
 import java.util.Objects;
+
+import superkit.language.NaturalNumber;
 
 public class IndexValue implements Index
 {

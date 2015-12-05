@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-import superkit.count.Count;
+import superkit.language.count.Count;
 
 public class ObjectList<T>
 {

@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import superkit.count.Count;
-import superkit.count.CountValue;
-import superkit.count.Index;
+import superkit.language.count.Count;
+import superkit.language.count.CountValue;
+import superkit.language.index.Index;
 
 public class CountTest
 {

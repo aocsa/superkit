@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import superkit.count.Count;
-import superkit.count.Index;
-import superkit.count.MutableIndex;
+import superkit.language.count.Count;
+import superkit.language.index.Index;
+import superkit.language.index.MutableIndex;
 
 public class IndexTest
 {
