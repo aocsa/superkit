@@ -14,7 +14,7 @@ public interface NaturalNumber extends Iterable<Index>
 
 	public default Index asIndex()
 	{
-		return Index.forLong(get());
+		return Index.of(get());
 	}
 
 	public default int asInteger()
@@ -47,7 +47,7 @@ public interface NaturalNumber extends Iterable<Index>
 					@Override
 					public Index next()
 					{
-						return Index.forLong(index++);
+						return Index.of(index++);
 					}
 				};
 			}
@@ -74,7 +74,7 @@ public interface NaturalNumber extends Iterable<Index>
 					@Override
 					public Index next()
 					{
-						return Index.forLong(index++);
+						return Index.of(index++);
 					}
 				};
 			}

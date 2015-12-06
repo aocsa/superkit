@@ -5,24 +5,24 @@ import superkit.language.count.Count;
 
 public interface Index extends NaturalNumber
 {
-	public static Index forLong(long index)
+	public static Index of(long index)
 	{
 		return new IndexValue(index);
 	}
 
 	public default Index add(NaturalNumber offset)
 	{
-		return Index.forLong(get() + offset.get());
+		return Index.of(get() + offset.get());
 	}
 
 	public default Index copy()
 	{
-		return Index.forLong(get());
+		return Index.of(get());
 	}
 
 	public default Index decremented()
 	{
-		return Index.forLong(get() - 1);
+		return Index.of(get() - 1);
 	}
 
 	public default Count distance(Index that)
@@ -32,12 +32,12 @@ public interface Index extends NaturalNumber
 
 	public default Index immutable()
 	{
-		return Index.forLong(get());
+		return Index.of(get());
 	}
 
 	public default Index incremented()
 	{
-		return Index.forLong(get() + 1);
+		return Index.of(get() + 1);
 	}
 
 	public default MutableIndex mutable()
@@ -47,7 +47,7 @@ public interface Index extends NaturalNumber
 
 	public default Index subtract(NaturalNumber that)
 	{
-		return Index.forLong(get() - that.get());
+		return Index.of(get() - that.get());
 	}
 
 	@Override

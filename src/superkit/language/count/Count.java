@@ -67,7 +67,7 @@ public interface Count extends NaturalNumber
 
 	public default Index subtract(Index that)
 	{
-		return Index.forLong(get() - that.get());
+		return Index.of(get() - that.get());
 	}
 
 	public default Count subtract(NaturalNumber that)

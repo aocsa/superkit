@@ -27,8 +27,8 @@ public class CountTest
 	{
 		final List<Index> indexes = new ArrayList<Index>();
 		Count.of(5L).forEach(value -> indexes.add(value));
-		assertEquals(indexes, Arrays.asList(Index.forLong(0), Index.forLong(1), Index.forLong(2), Index.forLong(3),
-		        Index.forLong(4)));
+		assertEquals(indexes, Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3),
+		        Index.of(4)));
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class CountTest
 			indexes.add(index);
 		}
 		assertEquals(
-		        Arrays.asList(Index.forLong(0), Index.forLong(1), Index.forLong(2), Index.forLong(3), Index.forLong(4)),
+		        Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)),
 		        indexes);
 	}
 
@@ -53,7 +53,7 @@ public class CountTest
 			indexes.add(index);
 		}
 		assertEquals(
-		        Arrays.asList(Index.forLong(0), Index.forLong(1), Index.forLong(2), Index.forLong(3), Index.forLong(4)),
+		        Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)),
 		        indexes);
 	}
 }
