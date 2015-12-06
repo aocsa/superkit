@@ -27,6 +27,33 @@ public interface NaturalNumber extends Iterable<Index>
 		return get();
 	}
 
+	public default Iterable<Index> indexes(NaturalNumber length)
+	{
+		return new Iterable<Index>()
+		{
+			@Override
+			public Iterator<Index> iterator()
+			{
+				return new Iterator<Index>()
+				{
+					private long index = get();
+
+					@Override
+					public boolean hasNext()
+					{
+						return index < get() + length.get();
+					}
+
+					@Override
+					public Index next()
+					{
+						return Index.of(index++);
+					}
+				};
+			}
+		};
+	}
+
 	public default Iterable<Index> indexesLessThan()
 	{
 		return new Iterable<Index>()

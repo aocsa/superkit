@@ -1,5 +1,7 @@
 package superkit.language.count;
 
+import java.util.Collection;
+
 import superkit.language.NaturalNumber;
 import superkit.language.index.Index;
 
@@ -25,6 +27,11 @@ public interface Count extends NaturalNumber
 	public static Count ONE_THOUSAND = of(1000);
 	public static Count TEN_THOUSAND = of(10000);
 
+	public static Count of(Collection<?> genes)
+	{
+		return of(genes.size());
+	}
+
 	public static Count of(long value)
 	{
 		return cache.forLong(value);
@@ -37,22 +44,22 @@ public interface Count extends NaturalNumber
 
 	public default Count add(NaturalNumber value)
 	{
-		return Count.of(get() + value.get());
+		return of(get() + value.get());
 	}
 
 	public default Count decremented()
 	{
-		return Count.of(get() - 1);
+		return of(get() - 1);
 	}
 
 	public default Count immutable()
 	{
-		return Count.of(get());
+		return of(get());
 	}
 
 	public default Count incremented()
 	{
-		return Count.of(get() + 1);
+		return of(get() + 1);
 	}
 
 	public default Count maximum(Count that)
@@ -72,7 +79,7 @@ public interface Count extends NaturalNumber
 
 	public default Count subtract(NaturalNumber that)
 	{
-		return Count.of(get() - that.get());
+		return of(get() - that.get());
 	}
 
 	@Override
