@@ -1,5 +1,7 @@
 package superkit.language.count;
 
+import superkit.language.NaturalNumber;
+
 public class Bits extends CountValue
 {
 	private static Bits[] cache = new Bits[65];
@@ -27,13 +29,37 @@ public class Bits extends CountValue
 	public static Bits FORTY_EIGHT = of(48);
 	public static Bits SIXTY_FOUR = of(64);
 
-	public static Bits of(int count)
+	public static Bits of(long count)
 	{
-		if (count < 0 || count > Long.SIZE)
+		if (count < 0)
 		{
-			throw new IllegalArgumentException("Bit count must be >= 0 and <= " + Long.SIZE);
+			throw new IllegalArgumentException("Bit count must be >= 0");
 		}
-		return cache[count];
+		if (count < Long.SIZE)
+		{
+			return cache[(int) count];
+		}
+		return new Bits(count);
+	}
+
+	public static Bits perByte()
+	{
+		return Bits.of(Byte.SIZE);
+	}
+
+	public static Bits perInteger()
+	{
+		return Bits.of(Integer.SIZE);
+	}
+
+	public static Bits perLong()
+	{
+		return Bits.of(Long.SIZE);
+	}
+
+	public static Bits perShort()
+	{
+		return Bits.of(Short.SIZE);
 	}
 
 	public static Bits toRepresent(long value)
@@ -43,7 +69,7 @@ public class Bits extends CountValue
 
 	private long mask;
 
-	private Bits(int count)
+	private Bits(long count)
 	{
 		super(count);
 		for (int i = 0; i < count; i++)
@@ -51,6 +77,15 @@ public class Bits extends CountValue
 			this.mask <<= 1;
 			this.mask |= 1;
 		}
+	}
+
+	/**
+	 * @return The number of elements of the given element size required to
+	 *         store this number of bits
+	 */
+	public Count arraySize(Bits elementSize)
+	{
+		return plus(elementSize.decremented()).dividedBy(elementSize);
 	}
 
 	public long mask()
@@ -61,5 +96,11 @@ public class Bits extends CountValue
 	public long maximumValue()
 	{
 		return this.mask;
+	}
+
+	@Override
+	public Bits times(NaturalNumber value)
+	{
+		return of(get() * value.get());
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import superkit.collections.ObjectList;
+import superkit.collections.lists.ObjectList;
 import superkit.language.count.Count;
 
 public class IndexList implements Iterable<Index>

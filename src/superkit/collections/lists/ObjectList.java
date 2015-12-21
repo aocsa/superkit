@@ -1,4 +1,4 @@
-package superkit.collections;
+package superkit.collections.lists;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,6 +19,11 @@ public class ObjectList<T> implements Iterable<T>
 	public ObjectList(List<T> objects)
 	{
 		this.objects = objects;
+	}
+
+	public void add(T object)
+	{
+		this.objects.add(object);
 	}
 
 	public T get(int index)

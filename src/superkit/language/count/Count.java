@@ -27,6 +27,14 @@ public interface Count extends NaturalNumber
 	public static Count ONE_THOUSAND = of(1000);
 	public static Count TEN_THOUSAND = of(10000);
 
+	public static Count MAXIMUM = Count.of(Long.MAX_VALUE);
+	public static Count MAXIMUM_LONG = Count.of(Long.MAX_VALUE);
+	public static Count MAXIMUM_INTEGER = Count.of(Integer.MAX_VALUE);
+	public static Count MAXIMUM_SHORT = Count.of(Short.MAX_VALUE);
+	public static Count MAXIMUM_CHAR = Count.of(Character.MAX_VALUE);
+	public static Count MAXIMUM_BYTE = Count.of(Byte.MAX_VALUE);
+	public static Count MINIMUM = Count.of(0);
+
 	public static Count of(Collection<?> genes)
 	{
 		return of(genes.size());
@@ -42,14 +50,14 @@ public interface Count extends NaturalNumber
 		return of(Long.parseLong(value));
 	}
 
-	public default Count add(NaturalNumber value)
-	{
-		return of(get() + value.get());
-	}
-
 	public default Count decremented()
 	{
 		return of(get() - 1);
+	}
+
+	public default Count dividedBy(NaturalNumber value)
+	{
+		return of(get() / value.get());
 	}
 
 	public default Count immutable()
@@ -67,19 +75,29 @@ public interface Count extends NaturalNumber
 		return this.get() > that.get() ? this : that;
 	}
 
+	public default Index minus(Index that)
+	{
+		return Index.of(get() - that.get());
+	}
+
+	public default Count minus(NaturalNumber that)
+	{
+		return of(get() - that.get());
+	}
+
 	public default MutableCount mutable()
 	{
 		return new MutableCount(this);
 	}
 
-	public default Index subtract(Index that)
+	public default Count plus(NaturalNumber value)
 	{
-		return Index.of(get() - that.get());
+		return of(get() + value.get());
 	}
 
-	public default Count subtract(NaturalNumber that)
+	public default Count times(NaturalNumber value)
 	{
-		return of(get() - that.get());
+		return of(get() * value.get());
 	}
 
 	@Override

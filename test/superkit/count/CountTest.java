@@ -19,7 +19,7 @@ public class CountTest
 	{
 		assertEquals(Count.of(5), Count.of("5"));
 		assertEquals(5L, Count.of(5).get());
-		assertEquals(CountValue.ZERO, Count.of(5).subtract(Count.of(5)));
+		assertEquals(CountValue.ZERO, Count.of(5).minus(Count.of(5)));
 	}
 
 	@Test
