@@ -5,6 +5,8 @@ import superkit.language.count.Count;
 
 public interface Index extends NaturalNumber
 {
+	public static Index ZERO = Index.of(0);
+
 	public static Index of(long index)
 	{
 		return new IndexValue(index);
