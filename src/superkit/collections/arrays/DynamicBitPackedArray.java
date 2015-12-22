@@ -3,13 +3,14 @@ package superkit.collections.arrays;
 import java.util.Iterator;
 import java.util.Objects;
 
+import superkit.collections.AbstractIterator;
 import superkit.collections.lists.ObjectList;
 import superkit.language.count.Bits;
 import superkit.language.count.Count;
 import superkit.language.count.MutableCount;
 import superkit.language.index.Index;
 
-public class DynamicBitPackedArray implements Iterable<Index>
+public class DynamicBitPackedArray implements Iterable<Long>
 {
 	private final ObjectList<VariableWidthBitPackedArray> arrays = new ObjectList<>();
 
@@ -87,16 +88,42 @@ public class DynamicBitPackedArray implements Iterable<Index>
 		}
 	}
 
-	@Override
-	public Iterator<Index> iterator()
+	public Iterable<Index> indexes()
 	{
-		return this.size.iterator();
+		return new Iterable<Index>()
+		{
+			@Override
+			public Iterator<Index> iterator()
+			{
+				return DynamicBitPackedArray.this.size.iterator();
+			}
+		};
+	}
+
+	@Override
+	public Iterator<Long> iterator()
+	{
+		return new AbstractIterator<Long>()
+		{
+			Index index = Index.ZERO;
+			Count size = size();
+
+			@Override
+			protected Long findNext()
+			{
+				if (this.index.isLessThan(this.size))
+				{
+					return get(this.index);
+				}
+				return null;
+			}
+		};
 	}
 
 	public long maximumValue()
 	{
 		long maximum = Integer.MIN_VALUE;
-		for (final Index index : this)
+		for (final Index index : indexes())
 		{
 			maximum = Math.max(maximum, get(index));
 		}
@@ -107,7 +134,11 @@ public class DynamicBitPackedArray implements Iterable<Index>
 	{
 		if (index.isLessThan(this.size))
 		{
-			return readArray(index).get(index);
+			final VariableWidthBitPackedArray array = readArray(index);
+			if (array != null)
+			{
+				return array.safeGet(index);
+			}
 		}
 		return null;
 	}

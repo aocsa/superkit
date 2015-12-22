@@ -2,6 +2,7 @@ package superkit.collections.arrays;
 
 import java.util.Iterator;
 
+import superkit.collections.AbstractIterator;
 import superkit.collections.lists.ObjectList;
 import superkit.language.count.Bits;
 import superkit.language.count.Count;
@@ -22,7 +23,7 @@ import superkit.language.string.Strings;
  *
  * @author Jonathan Locke
  */
-public class BitPackedArray implements Iterable<Index>
+public class BitPackedArray implements Iterable<Long>
 {
 	private static final Bits ARRAY_ELEMENT_SIZE = Bits.perLong();
 
@@ -79,10 +80,35 @@ public class BitPackedArray implements Iterable<Index>
 		}
 	}
 
-	@Override
-	public Iterator<Index> iterator()
+	public Iterable<Index> indexes()
 	{
-		return this.size.iterator();
+		return new Iterable<Index>()
+		{
+			@Override
+			public Iterator<Index> iterator()
+			{
+				return BitPackedArray.this.size.iterator();
+			}
+		};
+	}
+
+	@Override
+	public Iterator<Long> iterator()
+	{
+		return new AbstractIterator<Long>()
+		{
+			Index index = Index.ZERO;
+
+			@Override
+			protected Long findNext()
+			{
+				if (this.index.isLessThan(BitPackedArray.this.size))
+				{
+					return get(this.index);
+				}
+				return null;
+			}
+		};
 	}
 
 	public Long safeGet(Index index)

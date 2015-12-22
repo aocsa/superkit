@@ -12,7 +12,7 @@ import superkit.language.index.Index;
  *
  * @author Jonathan Locke
  */
-public class VariableWidthBitPackedArray implements Iterable<Index>
+public class VariableWidthBitPackedArray implements Iterable<Long>
 {
 	private BitPackedArray array;
 	private final long invertedMask;
@@ -39,8 +39,13 @@ public class VariableWidthBitPackedArray implements Iterable<Index>
 		return this.array.get(index);
 	}
 
+	public Iterable<Index> indexes()
+	{
+		return this.array.indexes();
+	}
+
 	@Override
-	public Iterator<Index> iterator()
+	public Iterator<Long> iterator()
 	{
 		return this.array.iterator();
 	}
@@ -73,7 +78,7 @@ public class VariableWidthBitPackedArray implements Iterable<Index>
 
 	private BitPackedArray copyTo(BitPackedArray copy)
 	{
-		for (final Index index : this.array)
+		for (final Index index : this.array.indexes())
 		{
 			copy.set(index, get(index));
 		}
