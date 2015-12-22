@@ -1,8 +1,11 @@
 package superkit.collections.arrays;
 
+import java.util.Iterator;
+
 import superkit.collections.lists.ObjectList;
 import superkit.language.count.Bits;
 import superkit.language.count.Count;
+import superkit.language.index.Index;
 import superkit.language.string.Strings;
 
 /**
@@ -19,7 +22,7 @@ import superkit.language.string.Strings;
  *
  * @author Jonathan Locke
  */
-public class BitPackedArray
+public class BitPackedArray implements Iterable<Index>
 {
 	private static final Bits ARRAY_ELEMENT_SIZE = Bits.perLong();
 
@@ -51,10 +54,15 @@ public class BitPackedArray
 		this.mask = bits.mask();
 	}
 
-	public long get(int index)
+	public Bits bits()
+	{
+		return Bits.of(this.bits);
+	}
+
+	public long get(Index index)
 	{
 		final int size = ARRAY_ELEMENT_SIZE.asInteger();
-		final int bitIndex = index * this.bits;
+		final int bitIndex = index.asInteger() * this.bits;
 		final int dataIndex = bitIndex / size;
 		final int dataBitOffset = bitIndex % size;
 		if (dataBitOffset + this.bits <= size)
@@ -71,10 +79,16 @@ public class BitPackedArray
 		}
 	}
 
-	public void set(int index, long value)
+	@Override
+	public Iterator<Index> iterator()
+	{
+		return this.size.iterator();
+	}
+
+	public void set(Index index, long value)
 	{
 		final int size = ARRAY_ELEMENT_SIZE.asInteger();
-		final int bitIndex = index * this.bits;
+		final int bitIndex = index.asInteger() * this.bits;
 		final int dataIndex = bitIndex / size;
 		final int dataBitOffset = bitIndex % size;
 		if (dataBitOffset + this.bits <= size)
@@ -104,9 +118,9 @@ public class BitPackedArray
 	public String toString()
 	{
 		final ObjectList<String> values = new ObjectList<>();
-		for (int i = 0; i < this.size.asInteger(); i++)
+		for (final Index index : size())
 		{
-			values.add(Strings.leftPad(Long.toBinaryString(get(i)), '0', this.bits));
+			values.add(Strings.leftPad(Long.toBinaryString(get(index)), '0', this.bits));
 		}
 		return values.join();
 	}

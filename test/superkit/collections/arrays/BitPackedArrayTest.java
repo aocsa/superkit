@@ -1,24 +1,33 @@
 package superkit.collections.arrays;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.Random;
+
 import org.junit.Test;
 
 import superkit.language.count.Bits;
 import superkit.language.count.Count;
+import superkit.language.index.Index;
+import superkit.testing.UnitTest;
 
-public class BitPackedArrayTest
+public class BitPackedArrayTest extends UnitTest
 {
 	@Test
 	public void test()
 	{
-		final BitPackedArray array = new BitPackedArray(Bits.FIVE, Count.SIXTEEN);
-		array.set(0, 31);
-		array.set(2, 31);
-		array.set(4, 31);
-		array.set(6, 31);
-		array.set(8, 31);
-		array.set(10, 31);
-		array.set(12, 31);
-		array.set(14, 31);
-		System.out.println(array);
+		final Random random = random();
+		for (final Bits bits : Bits.perLong().bitsLessThan())
+		{
+			final BitPackedArray array = new BitPackedArray(bits, Count.ONE_HUNDRED);
+			for (final Index index : array.size())
+			{
+				Count.ONE_HUNDRED.forEach(iteration -> {
+					final long value = Math.abs(random.nextLong() % bits.maximumValue() + 1);
+					array.set(index, value);
+					assertTrue(array.get(index) == value);
+				});
+			}
+		}
 	}
 }

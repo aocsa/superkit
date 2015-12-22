@@ -78,4 +78,9 @@ public class ObjectList<T> implements Iterable<T>
 	{
 		return Count.of(this.objects.size());
 	}
+
+	public int sizeAsInteger()
+	{
+		return this.objects.size();
+	}
 }

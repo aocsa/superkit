@@ -1,5 +1,7 @@
 package superkit.language.count;
 
+import java.util.Iterator;
+
 import superkit.language.NaturalNumber;
 
 public class Bits extends CountValue
@@ -86,6 +88,33 @@ public class Bits extends CountValue
 	public Count arraySize(Bits elementSize)
 	{
 		return plus(elementSize.decremented()).dividedBy(elementSize);
+	}
+
+	public Iterable<Bits> bitsLessThan()
+	{
+		return new Iterable<Bits>()
+		{
+			@Override
+			public Iterator<Bits> iterator()
+			{
+				return new Iterator<Bits>()
+				{
+					private int bits = 1;
+
+					@Override
+					public boolean hasNext()
+					{
+						return this.bits < get();
+					}
+
+					@Override
+					public Bits next()
+					{
+						return Bits.of(this.bits++);
+					}
+				};
+			}
+		};
 	}
 
 	public long mask()
