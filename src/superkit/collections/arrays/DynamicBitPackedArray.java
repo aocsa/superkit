@@ -17,6 +17,11 @@ public class DynamicBitPackedArray implements Iterable<Index>
 	private final Bits subArrayInitialBits;
 	private final Count subArraySize;
 
+	public DynamicBitPackedArray(Bits subArrayInitialBits)
+	{
+		this(subArrayInitialBits, Count.of(4096));
+	}
+
 	public DynamicBitPackedArray(Bits subArrayInitialBits, Count subArraySize)
 	{
 		this.subArrayInitialBits = subArrayInitialBits;
@@ -51,7 +56,16 @@ public class DynamicBitPackedArray implements Iterable<Index>
 
 	public long get(Index index)
 	{
-		return readArray(index).get(offset(index));
+		if (index.isLessThan(this.size))
+		{
+			final VariableWidthBitPackedArray array = readArray(index);
+			if (array != null)
+			{
+				return array.get(offset(index));
+			}
+			return 0;
+		}
+		throw new IllegalArgumentException("Index out of bounds");
 	}
 
 	@Override
@@ -60,10 +74,42 @@ public class DynamicBitPackedArray implements Iterable<Index>
 		return Objects.hashCode(this.arrays);
 	}
 
+	public void increment(Index index)
+	{
+		final Long value = safeGet(index);
+		if (value == null)
+		{
+			set(index, 1);
+		}
+		else
+		{
+			set(index, value + 1);
+		}
+	}
+
 	@Override
 	public Iterator<Index> iterator()
 	{
 		return this.size.iterator();
+	}
+
+	public long maximumValue()
+	{
+		long maximum = Integer.MIN_VALUE;
+		for (final Index index : this)
+		{
+			maximum = Math.max(maximum, get(index));
+		}
+		return maximum;
+	}
+
+	public Long safeGet(Index index)
+	{
+		if (index.isLessThan(this.size))
+		{
+			return readArray(index).get(index);
+		}
+		return null;
 	}
 
 	public void set(Index index, long value)
@@ -99,7 +145,7 @@ public class DynamicBitPackedArray implements Iterable<Index>
 	private VariableWidthBitPackedArray readArray(Index index)
 	{
 		final int whichArray = (int) (index.get() / this.subArraySize.asInteger());
-		return this.arrays.get(whichArray);
+		return this.arrays.safeGet(whichArray);
 	}
 
 	private VariableWidthBitPackedArray writeArray(Index index, long value)

@@ -85,6 +85,15 @@ public class BitPackedArray implements Iterable<Index>
 		return this.size.iterator();
 	}
 
+	public Long safeGet(Index index)
+	{
+		if (index.isLessThan(this.size))
+		{
+			return get(index);
+		}
+		return null;
+	}
+
 	public void set(Index index, long value)
 	{
 		final int size = ARRAY_ELEMENT_SIZE.asInteger();

@@ -45,6 +45,11 @@ public class VariableWidthBitPackedArray implements Iterable<Index>
 		return this.array.iterator();
 	}
 
+	public Long safeGet(Index index)
+	{
+		return this.array.safeGet(index);
+	}
+
 	public void set(Index index, long value)
 	{
 		// If the value is out of range
