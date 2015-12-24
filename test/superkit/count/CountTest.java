@@ -23,12 +23,22 @@ public class CountTest
 	}
 
 	@Test
+	public void testCountTo()
+	{
+		final List<Count> counts = new ArrayList<>();
+		for (final Count count : Count.FOUR.to(Count.EIGHT))
+		{
+			counts.add(count);
+		}
+		System.out.println(counts);
+	}
+
+	@Test
 	public void testForEach()
 	{
 		final List<Index> indexes = new ArrayList<Index>();
 		Count.of(5L).forEach(value -> indexes.add(value));
-		assertEquals(indexes, Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3),
-		        Index.of(4)));
+		assertEquals(indexes, Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)));
 	}
 
 	@Test
@@ -39,9 +49,7 @@ public class CountTest
 		{
 			indexes.add(index);
 		}
-		assertEquals(
-		        Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)),
-		        indexes);
+		assertEquals(Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)), indexes);
 	}
 
 	@Test
@@ -52,8 +60,6 @@ public class CountTest
 		{
 			indexes.add(index);
 		}
-		assertEquals(
-		        Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)),
-		        indexes);
+		assertEquals(Arrays.asList(Index.of(0), Index.of(1), Index.of(2), Index.of(3), Index.of(4)), indexes);
 	}
 }

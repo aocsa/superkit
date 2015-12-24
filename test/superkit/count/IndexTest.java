@@ -18,7 +18,7 @@ public class IndexTest
 			assertEquals(value + 1, Index.of(value).incremented().get());
 			assertEquals(value + 1, Index.of(value).add(Count.ONE).get());
 			assertEquals(value - 1, Index.of(value).decremented().get());
-			assertEquals(value - 1, Index.of(value).subtract(Count.ONE).get());
+			assertEquals(value - 1, Index.of(value).minus(Count.ONE).get());
 			assertEquals(1, Index.of(value).distance(Index.of(value + 1)).get());
 			assertEquals(1, Index.of(value).distance(Index.of(value - 1)).get());
 		}

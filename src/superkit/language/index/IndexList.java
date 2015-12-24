@@ -72,6 +72,11 @@ public class IndexList implements Iterable<Index>
 		return this.indexes.get(this.indexes.size() - 1);
 	}
 
+	public Index midpoint()
+	{
+		return first().add(last().distance(first()).dividedBy(Count.TWO));
+	}
+
 	public IndexList offsetAll(NaturalNumber offset)
 	{
 		for (int i = 0; i < this.indexes.size(); i++)

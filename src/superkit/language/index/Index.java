@@ -58,7 +58,7 @@ public interface Index extends NaturalNumber
 		return new MutableIndex(this);
 	}
 
-	public default Index subtract(NaturalNumber that)
+	public default Index minus(NaturalNumber that)
 	{
 		return Index.of(get() - that.get());
 	}

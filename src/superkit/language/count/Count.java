@@ -1,8 +1,10 @@
 package superkit.language.count;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.function.Consumer;
 
+import superkit.collections.AbstractIterator;
 import superkit.language.NaturalNumber;
 import superkit.language.index.Index;
 
@@ -108,6 +110,37 @@ public interface Count extends NaturalNumber
 	public default Count times(NaturalNumber value)
 	{
 		return of(get() * value.get());
+	}
+
+	public default Iterable<Count> to(Count that)
+	{
+		return new Iterable<Count>()
+		{
+			@Override
+			public Iterator<Count> iterator()
+			{
+				return new AbstractIterator<Count>()
+				{
+					private MutableCount count;
+
+					@Override
+					protected Count findNext()
+					{
+						if (count == null)
+						{
+							count = mutable();
+						}
+						if (count.isLessThanOrEqualTo(that))
+						{
+							final Count next = count.asCount();
+							count.increment();
+							return next;
+						}
+						return null;
+					}
+				};
+			}
+		};
 	}
 
 	@Override
