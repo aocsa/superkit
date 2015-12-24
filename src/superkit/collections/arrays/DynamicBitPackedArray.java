@@ -77,11 +77,6 @@ public class DynamicBitPackedArray implements Iterable<Long>
 		throw new IllegalArgumentException("Index out of bounds");
 	}
 
-	public boolean getBoolean(Index index)
-	{
-		return get(index) == 0 ? false : true;
-	}
-
 	@Override
 	public int hashCode()
 	{
@@ -154,11 +149,6 @@ public class DynamicBitPackedArray implements Iterable<Long>
 			}
 		}
 		return null;
-	}
-
-	public void set(Index index, boolean value)
-	{
-		set(index, value ? 1 : 0);
 	}
 
 	public void set(Index index, long value)
