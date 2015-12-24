@@ -26,6 +26,11 @@ public class ObjectList<T> implements Iterable<T>
 		this.objects.add(object);
 	}
 
+	public boolean contains(T object)
+	{
+		return this.objects.contains(object);
+	}
+
 	public T get(int index)
 	{
 		return this.objects.get(index);
