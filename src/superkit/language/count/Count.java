@@ -1,6 +1,7 @@
 package superkit.language.count;
 
 import java.util.Collection;
+import java.util.function.Consumer;
 
 import superkit.language.NaturalNumber;
 import superkit.language.index.Index;
@@ -94,6 +95,14 @@ public interface Count extends NaturalNumber
 	public default Count plus(NaturalNumber value)
 	{
 		return of(get() + value.get());
+	}
+
+	public default void repeat(Consumer<Index> consumer)
+	{
+		for (final Index index : this)
+		{
+			consumer.accept(index);
+		}
 	}
 
 	public default Count times(NaturalNumber value)

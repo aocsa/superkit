@@ -44,7 +44,12 @@ public class VariableWidthBitPackedArrayTest extends UnitTest
 		test(1, 251);
 		test(2, 252);
 		test(3, 253);
-		System.out.println(this.array);
+		Assert.assertEquals(Bits.EIGHT, this.array.bits());
+		test(0, 0);
+		test(1, 1);
+		test(2, 2);
+		test(3, 3);
+		Assert.assertEquals(Bits.EIGHT, this.array.bits());
 	}
 
 	private void test(int index, long value)

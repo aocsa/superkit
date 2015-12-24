@@ -23,32 +23,31 @@ public class DynamicBitPackedArrayTest extends UnitTest
 		test(5, 1);
 		test(6, 0);
 		test(7, 1);
-		System.out.println(this.array);
+
 		test(0, 0);
 		test(1, 1);
 		test(2, 2);
 		test(3, 3);
-		System.out.println(this.array);
+
 		test(0, 4);
 		test(1, 5);
 		test(2, 6);
 		test(3, 7);
-		System.out.println(this.array);
+
 		test(0, 16);
 		test(1, 17);
 		test(2, 18);
 		test(3, 19);
-		System.out.println(this.array);
+
 		test(0, 250);
 		test(1, 251);
 		test(2, 252);
 		test(3, 253);
-		System.out.println(this.array);
+
 		test(0, 250);
 		test(1, 251);
 		test(2, 252);
 		test(3, 253);
-		System.out.println(this.array);
 	}
 
 	private void test(int index, long value)

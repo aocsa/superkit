@@ -15,7 +15,7 @@ import superkit.language.index.Index;
 public class VariableWidthBitPackedArray implements Iterable<Long>
 {
 	private BitPackedArray array;
-	private final long invertedMask;
+	private long invertedMask;
 
 	/**
 	 * @param bits
@@ -60,7 +60,9 @@ public class VariableWidthBitPackedArray implements Iterable<Long>
 		// If the value is out of range
 		if ((value & this.invertedMask) != 0)
 		{
-			this.array = this.array.copyTo(new BitPackedArray(Bits.toRepresent(value), this.array.size()));
+			final Bits bits = Bits.toRepresent(value);
+			this.array = this.array.copyTo(new BitPackedArray(bits, this.array.size()));
+			this.invertedMask = ~bits.mask();
 		}
 		this.array.set(index, value);
 	}
