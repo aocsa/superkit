@@ -34,6 +34,19 @@ public class DynamicBitPackedArray implements Iterable<Long>
 		set(this.size.asIndex(), value);
 	}
 
+	public void decrement(Index index)
+	{
+		final Long value = safeGet(index);
+		if (value == null)
+		{
+			set(index, 1);
+		}
+		else
+		{
+			set(index, value - 1);
+		}
+	}
+
 	@Override
 	public boolean equals(Object object)
 	{
@@ -67,6 +80,11 @@ public class DynamicBitPackedArray implements Iterable<Long>
 			return 0;
 		}
 		throw new IllegalArgumentException("Index out of bounds");
+	}
+
+	public boolean getBoolean(Index index)
+	{
+		return get(index) == 0 ? false : true;
 	}
 
 	@Override
@@ -141,6 +159,11 @@ public class DynamicBitPackedArray implements Iterable<Long>
 			}
 		}
 		return null;
+	}
+
+	public void set(Index index, boolean value)
+	{
+		set(index, value ? 1 : 0);
 	}
 
 	public void set(Index index, long value)

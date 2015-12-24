@@ -76,9 +76,9 @@ public interface Count extends NaturalNumber
 		return this.get() > that.get() ? this : that;
 	}
 
-	public default Index minus(Index that)
+	public default Count minus(Index that)
 	{
-		return Index.of(get() - that.get());
+		return Count.of(get() - that.get());
 	}
 
 	public default Count minus(NaturalNumber that)
