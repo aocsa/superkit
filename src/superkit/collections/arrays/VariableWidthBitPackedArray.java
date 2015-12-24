@@ -60,7 +60,7 @@ public class VariableWidthBitPackedArray implements Iterable<Long>
 		// If the value is out of range
 		if ((value & this.invertedMask) != 0)
 		{
-			this.array = copyTo(new BitPackedArray(Bits.toRepresent(value), this.array.size()));
+			this.array = this.array.copyTo(new BitPackedArray(Bits.toRepresent(value), this.array.size()));
 		}
 		this.array.set(index, value);
 	}
@@ -74,14 +74,5 @@ public class VariableWidthBitPackedArray implements Iterable<Long>
 	public String toString()
 	{
 		return this.array.toString();
-	}
-
-	private BitPackedArray copyTo(BitPackedArray copy)
-	{
-		for (final Index index : this.array.indexes())
-		{
-			copy.set(index, get(index));
-		}
-		return copy;
 	}
 }

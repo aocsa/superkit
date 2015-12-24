@@ -60,6 +60,15 @@ public class BitPackedArray implements Iterable<Long>
 		return Bits.of(this.bits);
 	}
 
+	public BitPackedArray copyTo(BitPackedArray copy)
+	{
+		for (final Index index : indexes())
+		{
+			copy.set(index, get(index));
+		}
+		return copy;
+	}
+
 	public long get(Index index)
 	{
 		final int size = ARRAY_ELEMENT_SIZE.asInteger();

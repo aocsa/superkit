@@ -34,17 +34,12 @@ public class DynamicBitPackedArray implements Iterable<Long>
 		set(this.size.asIndex(), value);
 	}
 
-	public void decrement(Index index)
+	public long decrement(Index index)
 	{
 		final Long value = safeGet(index);
-		if (value == null)
-		{
-			set(index, 1);
-		}
-		else
-		{
-			set(index, value - 1);
-		}
+		final long decremented = value == null ? -1 : value - 1;
+		set(index, decremented);
+		return decremented;
 	}
 
 	@Override
@@ -155,7 +150,7 @@ public class DynamicBitPackedArray implements Iterable<Long>
 			final VariableWidthBitPackedArray array = readArray(index);
 			if (array != null)
 			{
-				return array.safeGet(index);
+				return array.safeGet(offset(index));
 			}
 		}
 		return null;
