@@ -1,6 +1,8 @@
 package superkit.collections.lists;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringJoiner;
@@ -87,5 +89,10 @@ public class ObjectList<T> implements Iterable<T>
 	public int sizeAsInteger()
 	{
 		return this.objects.size();
+	}
+
+	public void sort(Comparator<T> comparator)
+	{
+		Collections.sort(this.objects, comparator);
 	}
 }

@@ -17,6 +17,17 @@ public interface Index extends NaturalNumber
 		return Index.of(get() + offset.get());
 	}
 
+	public default int compareTo(Index that)
+	{
+		final long thisValue = this.get();
+		final long thatValue = that.get();
+		if (thisValue == thatValue)
+		{
+			return 0;
+		}
+		return thisValue < thatValue ? -1 : 1;
+	}
+
 	public default Index copy()
 	{
 		return Index.of(get());
