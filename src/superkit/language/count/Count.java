@@ -23,11 +23,27 @@ public interface Count extends NaturalNumber
 	public static Count EIGHT = of(8);
 	public static Count NINE = of(9);
 	public static Count TEN = of(10);
+	public static Count ELEVEN = of(11);
+	public static Count TWELVE = of(12);
+	public static Count THIRTEEN = of(13);
+	public static Count FOURTEEN = of(14);
+	public static Count FIFTEEN = of(15);
 	public static Count SIXTEEN = of(16);
+	public static Count SEVENTEEN = of(17);
+	public static Count EIGHTEEN = of(18);
+	public static Count NINETEEN = of(19);
+	public static Count TWENTY = of(20);
+	public static Count TWENTY_FOUR = of(24);
 	public static Count THIRTY_TWO = of(32);
+	public static Count FORTY_EIGHT = of(48);
 	public static Count SIXTY_FOUR = of(64);
+	public static Count EIGHTY = of(80);
+	public static Count NINETY_SIX = of(96);
 	public static Count ONE_HUNDRED = of(100);
 	public static Count ONE_HUNDRED_TWENTY_EIGHT = of(128);
+	public static Count TWO_HUNDRED_FIFTY_SIX = of(256);
+	public static Count FIVE_HUNDRED_TWELVE = of(512);
+	public static Count FIVE_HUNDRED = of(500);
 	public static Count ONE_THOUSAND = of(1000);
 	public static Count TEN_THOUSAND = of(10000);
 
