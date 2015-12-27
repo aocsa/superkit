@@ -123,6 +123,11 @@ public interface Count extends NaturalNumber
 		}
 	}
 
+	public default void repeat(Runnable runnable)
+	{
+		repeat(index -> runnable.run());
+	}
+
 	public default Count times(NaturalNumber value)
 	{
 		return of(get() * value.get());
