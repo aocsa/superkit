@@ -24,6 +24,11 @@ public class MutableCount implements Comparable<MutableCount>, Count
 		this.count.set(value.get());
 	}
 
+	public void add(Count that)
+	{
+		this.count.set(get() + that.get());
+	}
+
 	@Override
 	public int compareTo(MutableCount that)
 	{
@@ -71,6 +76,11 @@ public class MutableCount implements Comparable<MutableCount>, Count
 	public void increment()
 	{
 		this.count.incrementAndGet();
+	}
+
+	public void maximize(NaturalNumber that)
+	{
+		this.count.set(Math.max(get(), that.get()));
 	}
 
 	public MutableCount set(NaturalNumber value)

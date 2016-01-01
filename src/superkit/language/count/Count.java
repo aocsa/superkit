@@ -95,6 +95,11 @@ public interface Count extends NaturalNumber
 		return this.get() > that.get() ? this : that;
 	}
 
+	public default Count minimum(NaturalNumber that)
+	{
+		return of(Math.min(get(), that.get()));
+	}
+
 	public default Count minus(Index that)
 	{
 		return Count.of(get() - that.get());
