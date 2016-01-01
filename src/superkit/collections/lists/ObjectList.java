@@ -15,7 +15,16 @@ public class ObjectList<T> implements Iterable<T>
 
 	public ObjectList()
 	{
-		this(new ArrayList<T>());
+		this(new ArrayList<>());
+	}
+
+	public ObjectList(Iterable<T> objects)
+	{
+		this.objects = new ArrayList<>();
+		for (final T object : objects)
+		{
+			this.objects.add(object);
+		}
 	}
 
 	public ObjectList(List<T> objects)
