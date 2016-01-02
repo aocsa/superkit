@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import superkit.collections.AbstractIterator;
 import superkit.language.NaturalNumber;
 import superkit.language.index.Index;
+import superkit.math.ZeroToOne;
 
 public interface Count extends NaturalNumber
 {
@@ -113,6 +114,15 @@ public interface Count extends NaturalNumber
 	public default MutableCount mutable()
 	{
 		return new MutableCount(this);
+	}
+
+	public default ZeroToOne fractionOf(NaturalNumber that)
+	{
+		if (that.isLessThan(this))
+		{
+			throw new IllegalArgumentException("Cannot represent percentage greater than one");
+		}
+		return new ZeroToOne((double) get() / that.get());
 	}
 
 	public default Count plus(NaturalNumber value)
