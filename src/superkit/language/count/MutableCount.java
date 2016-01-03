@@ -83,6 +83,11 @@ public class MutableCount implements Comparable<MutableCount>, Count
 		this.count.set(Math.max(get(), that.get()));
 	}
 
+	public void minimize(NaturalNumber that)
+	{
+		this.count.set(Math.min(get(), that.get()));
+	}
+
 	public MutableCount set(NaturalNumber value)
 	{
 		this.count.set(value.get());
