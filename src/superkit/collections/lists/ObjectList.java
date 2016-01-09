@@ -6,8 +6,10 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.BiConsumer;
 
 import superkit.language.count.Count;
+import superkit.language.index.Index;
 
 public class ObjectList<T> implements Iterable<T>
 {
@@ -42,9 +44,17 @@ public class ObjectList<T> implements Iterable<T>
 		return this.objects.contains(object);
 	}
 
-	public T get(int index)
+	public void forEach(BiConsumer<T, Index> consumer)
 	{
-		return this.objects.get(index);
+		for (final Index index : size())
+		{
+			consumer.accept(get(index), index);
+		}
+	}
+
+	public T get(Index index)
+	{
+		return this.objects.get(index.asInteger());
 	}
 
 	@Override
@@ -72,32 +82,27 @@ public class ObjectList<T> implements Iterable<T>
 		return joiner.toString();
 	}
 
-	public T safeGet(int index)
+	public T safeGet(Index index)
 	{
-		if (index < this.objects.size())
+		if (index.asInteger() < this.objects.size())
 		{
-			return this.objects.get(index);
+			return this.objects.get(index.asInteger());
 		}
 		return null;
 	}
 
-	public void set(int index, T object)
+	public void set(Index index, T object)
 	{
-		while (index >= this.objects.size())
+		while (index.get() >= this.objects.size())
 		{
 			this.objects.add(null);
 		}
-		this.objects.set(index, object);
+		this.objects.set(index.asInteger(), object);
 	}
 
 	public Count size()
 	{
 		return Count.of(this.objects.size());
-	}
-
-	public int sizeAsInteger()
-	{
-		return this.objects.size();
 	}
 
 	public void sort(Comparator<T> comparator)

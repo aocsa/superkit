@@ -183,14 +183,13 @@ public class DynamicBitPackedArray implements Iterable<Long>
 
 	private VariableWidthBitPackedArray readArray(Index index)
 	{
-		final int whichArray = (int) (index.get() / this.subArraySize.asInteger());
-		return this.arrays.safeGet(whichArray);
+		return this.arrays.safeGet(index.dividedBy(this.subArraySize));
 	}
 
 	private VariableWidthBitPackedArray writeArray(Index index, long value)
 	{
 		// Find the right array for this index
-		final int whichArray = (int) (index.get() / this.subArraySize.asInteger());
+		final Index whichArray = index.dividedBy(this.subArraySize);
 		VariableWidthBitPackedArray array = this.arrays.safeGet(whichArray);
 
 		// If there's no array yet,

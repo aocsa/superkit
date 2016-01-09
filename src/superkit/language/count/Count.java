@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import superkit.collections.AbstractIterator;
 import superkit.language.NaturalNumber;
+import superkit.language.RandomValueFactory;
 import superkit.language.index.Index;
 import superkit.math.ZeroToOne;
 
@@ -81,6 +82,15 @@ public interface Count extends NaturalNumber
 		return of(get() / value.get());
 	}
 
+	public default ZeroToOne fractionOf(NaturalNumber that)
+	{
+		if (that.isLessThan(this))
+		{
+			throw new IllegalArgumentException("Cannot represent percentage greater than one");
+		}
+		return new ZeroToOne((double) get() / that.get());
+	}
+
 	public default Count immutable()
 	{
 		return of(get());
@@ -116,18 +126,14 @@ public interface Count extends NaturalNumber
 		return new MutableCount(this);
 	}
 
-	public default ZeroToOne fractionOf(NaturalNumber that)
-	{
-		if (that.isLessThan(this))
-		{
-			throw new IllegalArgumentException("Cannot represent percentage greater than one");
-		}
-		return new ZeroToOne((double) get() / that.get());
-	}
-
 	public default Count plus(NaturalNumber value)
 	{
 		return of(get() + value.get());
+	}
+
+	public default Index randomIndex()
+	{
+		return RandomValueFactory.INSTANCE.randomIndex(this);
 	}
 
 	public default void repeat(Consumer<Index> consumer)

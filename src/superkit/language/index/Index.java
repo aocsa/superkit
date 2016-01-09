@@ -43,6 +43,11 @@ public interface Index extends NaturalNumber
 		return Count.of(Math.abs(get() - that.get()));
 	}
 
+	public default Index dividedBy(NaturalNumber that)
+	{
+		return Index.of(get() / that.asLong());
+	}
+
 	public default Index immutable()
 	{
 		return Index.of(get());
@@ -53,14 +58,14 @@ public interface Index extends NaturalNumber
 		return Index.of(get() + 1);
 	}
 
-	public default MutableIndex mutable()
-	{
-		return new MutableIndex(this);
-	}
-
 	public default Index minus(NaturalNumber that)
 	{
 		return Index.of(get() - that.get());
+	}
+
+	public default MutableIndex mutable()
+	{
+		return new MutableIndex(this);
 	}
 
 	@Override

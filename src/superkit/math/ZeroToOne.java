@@ -4,6 +4,9 @@ import superkit.language.Comparison;
 
 public class ZeroToOne implements Comparison<ZeroToOne>
 {
+	public static final ZeroToOne ZERO = new ZeroToOne(0);
+	public static final ZeroToOne ONE = new ZeroToOne(1);
+
 	private final double value;
 
 	public ZeroToOne(final double value)
