@@ -13,11 +13,11 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 	{
 		if (value < 0)
 		{
-			throw new IllegalArgumentException("ZeroToOne value cannot be less than zero");
+			throw new IllegalArgumentException("Value " + value + " cannot be less than zero");
 		}
 		if (value > 1)
 		{
-			throw new IllegalArgumentException("ZeroToOne value cannot be greater than one");
+			throw new IllegalArgumentException("Value " + value + " cannot be greater than one");
 		}
 		this.value = value;
 	}
@@ -60,5 +60,11 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 	public boolean isLessThanOrEqualTo(ZeroToOne that)
 	{
 		return this.value <= that.value;
+	}
+
+	@Override
+	public String toString()
+	{
+		return Double.toString(this.value);
 	}
 }
