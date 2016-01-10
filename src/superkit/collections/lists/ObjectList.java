@@ -114,4 +114,10 @@ public class ObjectList<T> implements Iterable<T>
 	{
 		Collections.sort(this.objects, comparator);
 	}
+
+	@Override
+	public String toString()
+	{
+		return join();
+	}
 }
