@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import superkit.collections.lists.ObjectList;
@@ -12,7 +13,7 @@ import superkit.language.count.Count;
 import superkit.language.index.Index;
 import superkit.testing.UnitTest;
 
-public class BitPackedArrayTest extends UnitTest
+public class DynamicBooleanArrayTest extends UnitTest
 {
 	private final Random random = random();
 
@@ -22,7 +23,7 @@ public class BitPackedArrayTest extends UnitTest
 		final Count LENGTH = Count.ONE_THOUSAND;
 		for (final Bits bits : Bits.perLong().bitsLessThan())
 		{
-			final BitPackedArray array = new BitPackedArray(bits, LENGTH);
+			final DynamicBitPackedArray array = new DynamicBitPackedArray(bits, LENGTH.dividedBy(Count.TEN));
 			final ObjectList<Long> testValues = new ObjectList<>();
 			for (final Index index : LENGTH)
 			{
@@ -39,12 +40,54 @@ public class BitPackedArrayTest extends UnitTest
 	}
 
 	@Test
+	public void testSimple()
+	{
+		final DynamicBooleanArray array = new DynamicBooleanArray();
+		for (int i = 0; i < 10; i++)
+		{
+			test(array, 0, false);
+			test(array, 1, true);
+			test(array, 2, false);
+			test(array, 3, true);
+			test(array, 4, false);
+			test(array, 5, true);
+			test(array, 6, false);
+			test(array, 7, true);
+
+			test(array, 0, false);
+			test(array, 1, true);
+			test(array, 2, false);
+			test(array, 3, true);
+
+			test(array, 0, true);
+			test(array, 1, false);
+			test(array, 2, true);
+			test(array, 3, false);
+
+			test(array, 0, true);
+			test(array, 1, false);
+			test(array, 2, true);
+			test(array, 3, false);
+
+			test(array, 0, false);
+			test(array, 1, true);
+			test(array, 2, true);
+			test(array, 3, false);
+
+			test(array, 0, false);
+			test(array, 1, true);
+			test(array, 2, false);
+			test(array, 3, true);
+		}
+	}
+
+	@Test
 	public void testValues()
 	{
 		final Count LENGTH = Count.SIXTY_FOUR;
 		for (final Bits bits : Bits.perLong().bitsLessThan())
 		{
-			final BitPackedArray array = new BitPackedArray(bits, LENGTH);
+			final DynamicBitPackedArray array = new DynamicBitPackedArray(bits, LENGTH.dividedBy(Count.TEN));
 			LENGTH.forEach(index ->
 			{
 				final long maximum = Math.max(Long.MAX_VALUE, bits.maximumValue());
@@ -57,5 +100,11 @@ public class BitPackedArrayTest extends UnitTest
 				}
 			});
 		}
+	}
+
+	private void test(DynamicBooleanArray array, int index, boolean value)
+	{
+		array.set(Index.of(index), value);
+		Assert.assertEquals(value, array.is(Index.of(index)));
 	}
 }
