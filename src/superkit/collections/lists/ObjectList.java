@@ -57,6 +57,11 @@ public class ObjectList<T> implements Iterable<T>
 		return this.objects.get(index.asInteger());
 	}
 
+	public boolean isEmpty()
+	{
+		return this.objects.isEmpty();
+	}
+
 	@Override
 	public Iterator<T> iterator()
 	{
