@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import superkit.collections.AbstractIterator;
 import superkit.collections.lists.ObjectList;
-import superkit.language.count.Bits;
+import superkit.language.bits.Bits;
 import superkit.language.count.Count;
 import superkit.language.count.MutableCount;
 import superkit.language.index.Index;

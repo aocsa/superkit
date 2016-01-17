@@ -10,7 +10,7 @@ public class CountValue implements Count
 {
 	private final long count;
 
-	CountValue(long count)
+	protected CountValue(long count)
 	{
 		this.count = count;
 		if (count < 0)

@@ -2,7 +2,7 @@ package superkit.collections.arrays;
 
 import java.util.Iterator;
 
-import superkit.language.count.Bits;
+import superkit.language.bits.Bits;
 import superkit.language.count.Count;
 import superkit.language.index.Index;
 

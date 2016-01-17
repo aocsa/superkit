@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import superkit.collections.lists.ObjectList;
-import superkit.language.count.Bits;
+import superkit.language.bits.Bits;
 import superkit.language.count.Count;
 import superkit.language.index.Index;
 import superkit.testing.UnitTest;

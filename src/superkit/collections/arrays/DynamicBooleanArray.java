@@ -1,6 +1,6 @@
 package superkit.collections.arrays;
 
-import superkit.language.count.Bits;
+import superkit.language.bits.Bits;
 import superkit.language.index.Index;
 
 public class DynamicBooleanArray extends DynamicBitPackedArray

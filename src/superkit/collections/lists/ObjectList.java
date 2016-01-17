@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.function.BiConsumer;
 
@@ -34,6 +35,16 @@ public class ObjectList<T> implements Iterable<T>
 		this.objects = objects;
 	}
 
+	@SafeVarargs
+	public ObjectList(T... objects)
+	{
+		this.objects = new ArrayList<>();
+		for (final T object : objects)
+		{
+			this.objects.add(object);
+		}
+	}
+
 	public void add(T object)
 	{
 		this.objects.add(object);
@@ -42,6 +53,17 @@ public class ObjectList<T> implements Iterable<T>
 	public boolean contains(T object)
 	{
 		return this.objects.contains(object);
+	}
+
+	@Override
+	public boolean equals(Object object)
+	{
+		if (object instanceof ObjectList)
+		{
+			final ObjectList<?> that = (ObjectList<?>) object;
+			return this.objects.equals(that.objects);
+		}
+		return false;
 	}
 
 	public void forEach(BiConsumer<T, Index> consumer)
@@ -55,6 +77,12 @@ public class ObjectList<T> implements Iterable<T>
 	public T get(Index index)
 	{
 		return this.objects.get(index.asInteger());
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode(this.objects);
 	}
 
 	public boolean isEmpty()

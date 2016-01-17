@@ -1,8 +1,10 @@
-package superkit.language.count;
+package superkit.language.bits;
 
 import java.util.Iterator;
 
 import superkit.language.NaturalNumber;
+import superkit.language.count.Count;
+import superkit.language.count.CountValue;
 
 public class Bits extends CountValue
 {
@@ -47,6 +49,11 @@ public class Bits extends CountValue
 	public static Bits perByte()
 	{
 		return Bits.of(Byte.SIZE);
+	}
+
+	public static Bits perCharacter()
+	{
+		return Bits.of(Character.SIZE);
 	}
 
 	public static Bits perInteger()
