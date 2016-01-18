@@ -1,10 +1,15 @@
 package superkit.math;
 
+import java.util.Objects;
+
 import superkit.language.Comparison;
 
 public class ZeroToOne implements Comparison<ZeroToOne>
 {
 	public static final ZeroToOne ZERO = new ZeroToOne(0);
+	public static final ZeroToOne ONE_HALF = new ZeroToOne(0.5);
+	public static final ZeroToOne ONE_QUARTER = new ZeroToOne(0.25);
+	public static final ZeroToOne ONE_EIGHTH = new ZeroToOne(0.125);
 	public static final ZeroToOne ONE = new ZeroToOne(1);
 
 	private final double value;
@@ -30,6 +35,23 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 	public double asDouble()
 	{
 		return this.value;
+	}
+
+	@Override
+	public boolean equals(Object object)
+	{
+		if (object instanceof ZeroToOne)
+		{
+			final ZeroToOne that = (ZeroToOne) object;
+			return this.value == that.value;
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode(this.value);
 	}
 
 	@Override
