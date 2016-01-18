@@ -24,9 +24,10 @@ public class MutableCount implements Comparable<MutableCount>, Count
 		this.count.set(value.get());
 	}
 
-	public void add(Count that)
+	public MutableCount add(Count that)
 	{
 		this.count.set(get() + that.get());
+		return this;
 	}
 
 	@Override

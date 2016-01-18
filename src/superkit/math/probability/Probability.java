@@ -1,4 +1,6 @@
-package superkit.math;
+package superkit.math.probability;
+
+import superkit.math.ZeroToOne;
 
 public class Probability extends ZeroToOne
 {

@@ -46,8 +46,10 @@ public interface Count extends NaturalNumber
 	public static Count TWO_HUNDRED_FIFTY_SIX = of(256);
 	public static Count FIVE_HUNDRED_TWELVE = of(512);
 	public static Count FIVE_HUNDRED = of(500);
-	public static Count ONE_THOUSAND = of(1000);
-	public static Count TEN_THOUSAND = of(10000);
+	public static Count ONE_THOUSAND = of("1,000");
+	public static Count TEN_THOUSAND = of("10,000");
+	public static Count ONE_HUNDRED_THOUSAND = of("100,000");
+	public static Count ONE_MILLION = of("1,000,000");
 
 	public static Count MAXIMUM = Count.of(Long.MAX_VALUE);
 	public static Count MAXIMUM_LONG = Count.of(Long.MAX_VALUE);
@@ -69,7 +71,7 @@ public interface Count extends NaturalNumber
 
 	public static Count of(String value)
 	{
-		return of(Long.parseLong(value));
+		return of(Long.parseLong(value.replaceAll(",", "")));
 	}
 
 	public default Count decremented()

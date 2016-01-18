@@ -1,4 +1,4 @@
-package superkit.math;
+package superkit.math.probability;
 
 import superkit.collections.lists.ObjectList;
 import superkit.language.RandomValueFactory;
