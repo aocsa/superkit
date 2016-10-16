@@ -79,6 +79,11 @@ public class MutableCount implements Comparable<MutableCount>, Count
 		this.count.incrementAndGet();
 	}
 
+	public boolean isGreaterThanZero()
+	{
+		return this.count.get() > 0;
+	}
+
 	public void maximize(NaturalNumber that)
 	{
 		this.count.set(Math.max(get(), that.get()));

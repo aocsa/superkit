@@ -50,6 +50,14 @@ public class ObjectList<T> implements Iterable<T>
 		this.objects.add(object);
 	}
 
+	public void addAll(Iterable<T> objects)
+	{
+		for (final T object : objects)
+		{
+			add(object);
+		}
+	}
+
 	public boolean contains(T object)
 	{
 		return this.objects.contains(object);
