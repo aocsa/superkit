@@ -96,7 +96,7 @@ public class Path<Element> implements Iterable<Element>
 
 	public String join(String delimiter)
 	{
-		final StringJoiner joiner = new StringJoiner(".");
+		final StringJoiner joiner = new StringJoiner(delimiter);
 		for (final Element element : this)
 		{
 			joiner.add(element.toString());
