@@ -7,7 +7,7 @@ import superkit.collections.lists.ObjectList;
 import superkit.language.bits.Bits;
 import superkit.language.count.Count;
 import superkit.language.index.Index;
-import superkit.language.string.Strings;
+import superkit.language.strings.Strings;
 
 /**
  * Stores values of an arbitrary bit length by packing them end-to-end into an

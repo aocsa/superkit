@@ -1,9 +1,24 @@
-package superkit.language.string;
+package superkit.language.strings;
 
 import superkit.language.count.Count;
 
 public class Strings
 {
+	public static String after(String within, String after)
+	{
+		final int index = within.indexOf(after);
+		if (index != -1)
+		{
+			return within.substring(index);
+		}
+		return within;
+	}
+
+	public static boolean isCapitalized(String string)
+	{
+		return string.length() > 0 && Character.isUpperCase(string.charAt(0));
+	}
+
 	public static String leftPad(String string, char c, int length)
 	{
 		if (string.length() < length)

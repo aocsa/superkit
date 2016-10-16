@@ -2,17 +2,45 @@ package superkit.io.filesystem;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import superkit.io.Resource;
 import superkit.io.ResourceStream;
+import superkit.language.strings.Strings;
 
-public class File implements Resource
+public class File extends FileSystemObject implements Resource
 {
-	private final java.io.File file;
+	public File(Path path)
+	{
+		super(path);
+	}
 
 	public File(String path)
 	{
-		this.file = new java.io.File(path);
+		super(path);
+	}
+
+	public String asString()
+	{
+		try
+		{
+			return new String(Files.readAllBytes(path()));
+		}
+		catch (final IOException e)
+		{
+			throw new RuntimeException("unable to read " + this + ": " + e);
+		}
+	}
+
+	public Extension extension()
+	{
+		if (name().contains("."))
+		{
+			return new Extension(Strings.after(name(), "."));
+		}
+		return null;
 	}
 
 	@Override
@@ -20,11 +48,20 @@ public class File implements Resource
 	{
 		try
 		{
-			return new ResourceStream(new FileInputStream(this.file));
+			return new ResourceStream(new FileInputStream(javaFile()));
 		}
 		catch (final FileNotFoundException e)
 		{
 			throw new RuntimeException("Couldn't open file for reading", e);
 		}
+	}
+
+	public Folder parent()
+	{
+		if (isRoot())
+		{
+			return null;
+		}
+		return new Folder(path().getParent());
 	}
 }
