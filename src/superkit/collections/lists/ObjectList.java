@@ -47,7 +47,10 @@ public class ObjectList<T> implements Iterable<T>
 
 	public void add(T object)
 	{
-		this.objects.add(object);
+		if (object != null)
+		{
+			this.objects.add(object);
+		}
 	}
 
 	public void addAll(Iterable<T> objects)

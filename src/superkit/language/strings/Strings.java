@@ -34,6 +34,15 @@ public class Strings
 		return string;
 	}
 
+	public static String spaceAfter(String string)
+	{
+		if (string.isEmpty())
+		{
+			return string;
+		}
+		return string + " ";
+	}
+
 	public static String wrap(String string, Count columns)
 	{
 		final StringBuilder builder = new StringBuilder();

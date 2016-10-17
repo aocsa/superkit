@@ -5,8 +5,8 @@ import superkit.triage.Severity;
 
 public class Problem extends AbstractMessage
 {
-    public Problem(final String message, final Object... arguments)
-    {
-        super(Severity.HIGH, message, arguments);
-    }
+	public Problem(final String message, final Object... arguments)
+	{
+		super(Severity.MEDIUM_HIGH, message, arguments);
+	}
 }
