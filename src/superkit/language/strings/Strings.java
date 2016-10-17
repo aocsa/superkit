@@ -34,13 +34,22 @@ public class Strings
 		return string;
 	}
 
-	public static String spaceAfter(String string)
+	public static String spaceAfter(Object object)
 	{
-		if (string.isEmpty())
+		if (object == null || object.toString().isEmpty())
 		{
-			return string;
+			return "";
 		}
-		return string + " ";
+		return object + " ";
+	}
+
+	public static String spaceBefore(Object object)
+	{
+		if (object == null || object.toString().isEmpty())
+		{
+			return "";
+		}
+		return " " + object;
 	}
 
 	public static String wrap(String string, Count columns)
