@@ -90,7 +90,7 @@ public interface Count extends NaturalNumber
 		{
 			throw new IllegalArgumentException("Cannot represent percentage greater than one");
 		}
-		return new ZeroToOne((double) get() / that.get());
+		return ZeroToOne.of((double) get() / that.get());
 	}
 
 	public default Count immutable()

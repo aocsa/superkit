@@ -12,9 +12,14 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 	public static final ZeroToOne ONE_EIGHTH = new ZeroToOne(0.125);
 	public static final ZeroToOne ONE = new ZeroToOne(1);
 
+	public static ZeroToOne of(double value)
+	{
+		return new ZeroToOne(value);
+	}
+
 	private final double value;
 
-	public ZeroToOne(final double value)
+	protected ZeroToOne(final double value)
 	{
 		if (value < 0)
 		{
@@ -29,12 +34,12 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 
 	public ZeroToOne add(ZeroToOne that)
 	{
-		return new ZeroToOne(this.value + that.value);
+		return new ZeroToOne(value + that.value);
 	}
 
 	public double asDouble()
 	{
-		return this.value;
+		return value;
 	}
 
 	@Override
@@ -43,7 +48,7 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 		if (object instanceof ZeroToOne)
 		{
 			final ZeroToOne that = (ZeroToOne) object;
-			return this.value == that.value;
+			return value == that.value;
 		}
 		return false;
 	}
@@ -51,42 +56,42 @@ public class ZeroToOne implements Comparison<ZeroToOne>
 	@Override
 	public int hashCode()
 	{
-		return Objects.hashCode(this.value);
+		return Objects.hashCode(value);
 	}
 
 	@Override
 	public boolean isEqualTo(ZeroToOne that)
 	{
-		return this.value == that.value;
+		return value == that.value;
 	}
 
 	@Override
 	public boolean isGreaterThan(ZeroToOne that)
 	{
-		return this.value > that.value;
+		return value > that.value;
 	}
 
 	@Override
 	public boolean isGreaterThanOrEqualTo(ZeroToOne that)
 	{
-		return this.value >= that.value;
+		return value >= that.value;
 	}
 
 	@Override
 	public boolean isLessThan(ZeroToOne that)
 	{
-		return this.value < that.value;
+		return value < that.value;
 	}
 
 	@Override
 	public boolean isLessThanOrEqualTo(ZeroToOne that)
 	{
-		return this.value <= that.value;
+		return value <= that.value;
 	}
 
 	@Override
 	public String toString()
 	{
-		return Double.toString(this.value);
+		return Double.toString(value);
 	}
 }
