@@ -59,9 +59,24 @@ public interface Count extends NaturalNumber
 	public static Count MAXIMUM_BYTE = Count.of(Byte.MAX_VALUE);
 	public static Count MINIMUM = Count.of(0);
 
-	public static Count of(Collection<?> genes)
+	public static Count of(Collection<?> collection)
 	{
-		return of(genes.size());
+		return of(collection.size());
+	}
+
+	@SuppressWarnings("unused")
+	public static Count of(Iterable<?> iterable)
+	{
+		if (iterable instanceof Collection)
+		{
+			return of((Collection<?>) iterable);
+		}
+		final MutableCount count = new MutableCount();
+		for (final Object object : iterable)
+		{
+			count.increment();
+		}
+		return count.asCount();
 	}
 
 	public static Count of(long value)
@@ -103,6 +118,11 @@ public interface Count extends NaturalNumber
 		return of(get() + 1);
 	}
 
+	public default boolean isOne()
+	{
+		return equals(ONE);
+	}
+
 	public default Count maximum(Count that)
 	{
 		return this.get() > that.get() ? this : that;
@@ -131,6 +151,11 @@ public interface Count extends NaturalNumber
 	public default Count plus(NaturalNumber value)
 	{
 		return of(get() + value.get());
+	}
+
+	public default Count power(NaturalNumber power)
+	{
+		return Count.of((long) Math.pow(asLong(), power.get()));
 	}
 
 	public default Index randomIndex()
