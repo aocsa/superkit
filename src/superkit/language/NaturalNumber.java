@@ -5,7 +5,7 @@ import java.util.Iterator;
 import superkit.language.count.Count;
 import superkit.language.index.Index;
 
-public interface NaturalNumber extends Iterable<Index>
+public interface NaturalNumber extends Iterable<Index>, Comparable<NaturalNumber>
 {
 	public default Count asCount()
 	{
@@ -25,6 +25,12 @@ public interface NaturalNumber extends Iterable<Index>
 	public default long asLong()
 	{
 		return get();
+	}
+
+	@Override
+	public default int compareTo(NaturalNumber that)
+	{
+		return Long.compare(this.get(), that.get());
 	}
 
 	public default Iterable<Index> indexes(NaturalNumber length)

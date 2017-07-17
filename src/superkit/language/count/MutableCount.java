@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import superkit.language.NaturalNumber;
 
-public class MutableCount implements Comparable<MutableCount>, Count
+public class MutableCount implements Count
 {
 	public static int compare(MutableCount a, MutableCount b)
 	{
@@ -21,34 +21,18 @@ public class MutableCount implements Comparable<MutableCount>, Count
 
 	public MutableCount(NaturalNumber value)
 	{
-		this.count.set(value.get());
+		count.set(value.get());
 	}
 
 	public MutableCount add(Count that)
 	{
-		this.count.set(get() + that.get());
+		count.set(get() + that.get());
 		return this;
-	}
-
-	@Override
-	public int compareTo(MutableCount that)
-	{
-		final long thisValue = this.count.get();
-		final long thatValue = that.count.get();
-		if (thisValue < thatValue)
-		{
-			return -1;
-		}
-		if (thisValue > thatValue)
-		{
-			return 1;
-		}
-		return 0;
 	}
 
 	public void decrement()
 	{
-		this.count.decrementAndGet();
+		count.decrementAndGet();
 	}
 
 	@Override
@@ -57,7 +41,7 @@ public class MutableCount implements Comparable<MutableCount>, Count
 		if (object instanceof NaturalNumber)
 		{
 			final NaturalNumber number = (NaturalNumber) object;
-			return this.count.get() == number.get();
+			return count.get() == number.get();
 		}
 		return false;
 	}
@@ -65,44 +49,44 @@ public class MutableCount implements Comparable<MutableCount>, Count
 	@Override
 	public long get()
 	{
-		return this.count.get();
+		return count.get();
 	}
 
 	@Override
 	public int hashCode()
 	{
-		return Objects.hashCode(this.count.get());
+		return Objects.hashCode(count.get());
 	}
 
 	public void increment()
 	{
-		this.count.incrementAndGet();
+		count.incrementAndGet();
 	}
 
 	public boolean isGreaterThanZero()
 	{
-		return this.count.get() > 0;
+		return count.get() > 0;
 	}
 
 	public void maximize(NaturalNumber that)
 	{
-		this.count.set(Math.max(get(), that.get()));
+		count.set(Math.max(get(), that.get()));
 	}
 
 	public void minimize(NaturalNumber that)
 	{
-		this.count.set(Math.min(get(), that.get()));
+		count.set(Math.min(get(), that.get()));
 	}
 
 	public MutableCount set(NaturalNumber value)
 	{
-		this.count.set(value.get());
+		count.set(value.get());
 		return this;
 	}
 
 	@Override
 	public String toString()
 	{
-		return this.count.toString();
+		return count.toString();
 	}
 }
