@@ -1,8 +1,7 @@
-package superkit.collections.arrays;
+package org.locke.superkit.collections.arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.locke.superkit.collections.arrays.VariableWidthBitPackedArray;
 import org.locke.superkit.language.bits.Bits;
 import org.locke.superkit.language.count.Count;
 import org.locke.superkit.language.index.Index;
@@ -10,6 +9,12 @@ import org.locke.superkit.testing.UnitTest;
 
 public class VariableWidthBitPackedArrayTest extends UnitTest
 {
+	private void test(final VariableWidthBitPackedArray array, final int index, final long value)
+	{
+		array.set(Index.of(index), value);
+		Assert.assertEquals(value, array.get(Index.of(index)));
+	}
+
 	@Test
 	public void testSimple()
 	{
@@ -49,11 +54,5 @@ public class VariableWidthBitPackedArrayTest extends UnitTest
 		test(array, 2, 2);
 		test(array, 3, 3);
 		Assert.assertEquals(Bits.EIGHT, array.bits());
-	}
-
-	private void test(VariableWidthBitPackedArray array, int index, long value)
-	{
-		array.set(Index.of(index), value);
-		Assert.assertEquals(value, array.get(Index.of(index)));
 	}
 }

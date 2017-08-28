@@ -1,4 +1,4 @@
-package superkit.math.probability;
+package org.locke.superkit.math.probability;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.locke.superkit.language.count.Count;
 import org.locke.superkit.language.count.MutableCount;
 import org.locke.superkit.language.index.Index;
-import org.locke.superkit.math.probability.Probabilities;
-import org.locke.superkit.math.probability.Probability;
 
 public class ProbabilitiesTest
 {
@@ -21,8 +19,7 @@ public class ProbabilitiesTest
 			probabilities.add(new Probability(0.75));
 			final MutableCount first = new MutableCount();
 			final MutableCount second = new MutableCount();
-			Count.ONE_MILLION.repeat(() ->
-			{
+			Count.ONE_MILLION.repeat(() -> {
 				final Index index = probabilities.randomIndex();
 				switch (index.asInteger())
 				{
@@ -49,8 +46,7 @@ public class ProbabilitiesTest
 			final MutableCount first = new MutableCount();
 			final MutableCount second = new MutableCount();
 			final MutableCount third = new MutableCount();
-			Count.ONE_MILLION.repeat(() ->
-			{
+			Count.ONE_MILLION.repeat(() -> {
 				final Index index = probabilities.randomIndex();
 				switch (index.asInteger())
 				{

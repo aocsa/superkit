@@ -1,9 +1,8 @@
-package superkit.language.count;
+package org.locke.superkit.language.count;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.locke.superkit.language.count.Count;
 import org.locke.superkit.math.ZeroToOne;
 
 public class CountTest

@@ -1,4 +1,4 @@
-package superkit.collections.arrays;
+package org.locke.superkit.collections.arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,6 @@ import java.util.Random;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.locke.superkit.collections.arrays.DynamicBitPackedArray;
 import org.locke.superkit.collections.lists.ObjectList;
 import org.locke.superkit.language.bits.Bits;
 import org.locke.superkit.language.count.Count;
@@ -16,6 +15,12 @@ import org.locke.superkit.testing.UnitTest;
 public class DynamicBitPackedArrayTest extends UnitTest
 {
 	private final Random random = random();
+
+	private void test(final DynamicBitPackedArray array, final int index, final long value)
+	{
+		array.set(Index.of(index), value);
+		Assert.assertEquals(value, array.get(Index.of(index)));
+	}
 
 	@Test
 	public void testRandom()
@@ -27,7 +32,7 @@ public class DynamicBitPackedArrayTest extends UnitTest
 			final ObjectList<Long> testValues = new ObjectList<>();
 			for (final Index index : LENGTH)
 			{
-				final long value = Math.abs(this.random.nextLong() % bits.maximumValue() + 1);
+				final long value = Math.abs(random.nextLong() % bits.maximumValue() + 1);
 				testValues.set(index, value);
 				array.set(index, value);
 			}
@@ -88,8 +93,7 @@ public class DynamicBitPackedArrayTest extends UnitTest
 		for (final Bits bits : Bits.perLong().bitsLessThan())
 		{
 			final DynamicBitPackedArray array = new DynamicBitPackedArray(bits, LENGTH.dividedBy(Count.TEN));
-			LENGTH.forEach(index ->
-			{
+			LENGTH.forEach(index -> {
 				final long maximum = Math.max(Long.MAX_VALUE, bits.maximumValue());
 				final long steps = 10000;
 				final long step = Math.max(1, maximum / steps);
@@ -100,11 +104,5 @@ public class DynamicBitPackedArrayTest extends UnitTest
 				}
 			});
 		}
-	}
-
-	private void test(DynamicBitPackedArray array, int index, long value)
-	{
-		array.set(Index.of(index), value);
-		Assert.assertEquals(value, array.get(Index.of(index)));
 	}
 }

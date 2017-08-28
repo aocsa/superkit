@@ -1,4 +1,4 @@
-package superkit.count;
+package org.locke.superkit.count;
 
 import static org.junit.Assert.assertEquals;
 
