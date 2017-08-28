@@ -3,8 +3,8 @@ package superkit.language.count;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import superkit.math.ZeroToOne;
+import org.locke.superkit.language.count.Count;
+import org.locke.superkit.math.ZeroToOne;
 
 public class CountTest
 {

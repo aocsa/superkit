@@ -2,11 +2,11 @@ package superkit.collections.arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import superkit.language.bits.Bits;
-import superkit.language.count.Count;
-import superkit.language.index.Index;
-import superkit.testing.UnitTest;
+import org.locke.superkit.collections.arrays.VariableWidthBitPackedArray;
+import org.locke.superkit.language.bits.Bits;
+import org.locke.superkit.language.count.Count;
+import org.locke.superkit.language.index.Index;
+import org.locke.superkit.testing.UnitTest;
 
 public class VariableWidthBitPackedArrayTest extends UnitTest
 {

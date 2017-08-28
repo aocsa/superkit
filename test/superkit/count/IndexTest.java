@@ -3,10 +3,9 @@ package superkit.count;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import superkit.language.count.Count;
-import superkit.language.index.Index;
-import superkit.language.index.MutableIndex;
+import org.locke.superkit.language.count.Count;
+import org.locke.superkit.language.index.Index;
+import org.locke.superkit.language.index.MutableIndex;
 
 public class IndexTest
 {

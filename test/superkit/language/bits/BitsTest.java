@@ -3,9 +3,9 @@ package superkit.language.bits;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import superkit.collections.lists.ObjectList;
-import superkit.language.count.Count;
+import org.locke.superkit.collections.lists.ObjectList;
+import org.locke.superkit.language.bits.Bits;
+import org.locke.superkit.language.count.Count;
 
 public class BitsTest
 {

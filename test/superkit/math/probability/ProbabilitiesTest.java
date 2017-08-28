@@ -4,10 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
-
-import superkit.language.count.Count;
-import superkit.language.count.MutableCount;
-import superkit.language.index.Index;
+import org.locke.superkit.language.count.Count;
+import org.locke.superkit.language.count.MutableCount;
+import org.locke.superkit.language.index.Index;
+import org.locke.superkit.math.probability.Probabilities;
+import org.locke.superkit.math.probability.Probability;
 
 public class ProbabilitiesTest
 {

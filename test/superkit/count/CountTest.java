@@ -7,10 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-
-import superkit.language.count.Count;
-import superkit.language.count.CountValue;
-import superkit.language.index.Index;
+import org.locke.superkit.language.count.Count;
+import org.locke.superkit.language.count.CountValue;
+import org.locke.superkit.language.index.Index;
 
 public class CountTest
 {

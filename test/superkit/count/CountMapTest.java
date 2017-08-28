@@ -3,9 +3,8 @@ package superkit.count;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import superkit.language.count.Count;
-import superkit.language.count.CountMap;
+import org.locke.superkit.language.count.Count;
+import org.locke.superkit.language.count.CountMap;
 
 public class CountMapTest
 {
