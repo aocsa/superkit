@@ -4,9 +4,16 @@ import java.util.Objects;
 
 public class Identifier
 {
-	public static final Identifier ONE = of(1);
-	public static final Identifier TWO = of(2);
-	public static final Identifier THREE = of(3);
+	public static final Identifier ONE = new Identifier(1);
+	public static final Identifier TWO = new Identifier(2);
+	public static final Identifier THREE = new Identifier(3);
+	public static final Identifier FOUR = new Identifier(4);
+	public static final Identifier FIVE = new Identifier(5);
+	public static final Identifier SIX = new Identifier(6);
+	public static final Identifier SEVEN = new Identifier(7);
+	public static final Identifier EIGHT = new Identifier(8);
+	public static final Identifier NINE = new Identifier(9);
+	public static final Identifier TEN = new Identifier(10);
 
 	public static Identifier of(final long identifier)
 	{
@@ -22,6 +29,27 @@ public class Identifier
 
 				case 3:
 					return THREE;
+
+				case 4:
+					return FOUR;
+
+				case 5:
+					return FIVE;
+
+				case 6:
+					return SIX;
+
+				case 7:
+					return SEVEN;
+
+				case 8:
+					return EIGHT;
+
+				case 9:
+					return NINE;
+
+				case 10:
+					return TEN;
 			}
 		}
 		return new Identifier(identifier);
@@ -54,5 +82,11 @@ public class Identifier
 	public int hashCode()
 	{
 		return Objects.hash(identifier);
+	}
+
+	@Override
+	public String toString()
+	{
+		return Long.toString(identifier);
 	}
 }
